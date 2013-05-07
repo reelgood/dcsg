@@ -16,6 +16,7 @@ namespace dcsg.Managers
         {
             if (_init)
                 return;
+
             _init = true;
             NullTexture = new Texture2D(DCSG.MainObject.GraphicsDevice, 1, 1);
         }

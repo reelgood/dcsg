@@ -35,6 +35,7 @@ namespace dcsg
         }
         protected override void Initialize()
         {
+            Textures.Initialize();
             base.Initialize();
         }
         protected override void LoadContent()
@@ -50,8 +51,9 @@ namespace dcsg
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 this.Exit();
 
+            Inputhandler.Update(gameTime); //Inputhandling first
             if (_loadedScreen != null) { _loadedScreen.Update(gameTime); }
-            Inputhandler.Update(gameTime);
+            
             base.Update(gameTime);
         }
         protected override void Draw(GameTime gameTime)
