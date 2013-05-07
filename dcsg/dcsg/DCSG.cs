@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using dcsg.Managers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
@@ -19,6 +20,8 @@ namespace dcsg
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         static DCSG _mgo;
+        Screen _loadedScreen;
+        public Screen ActiveScreen { get { return _loadedScreen; } }
         public static DCSG MainObject { get { return _mgo; } }
         public static ContentManager Contents { get { return _mgo.Content; } }
         public DCSG()
@@ -37,6 +40,7 @@ namespace dcsg
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            _loadedScreen = new dcsg.Screens.Mainmenu();
         }
         protected override void UnloadContent()
         {
@@ -46,11 +50,14 @@ namespace dcsg
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 this.Exit();
 
+            if (_loadedScreen != null) { _loadedScreen.Update(gameTime); }
+            Inputhandler.Update(gameTime);
             base.Update(gameTime);
         }
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
+            if (_loadedScreen != null) { _loadedScreen.Draw(gameTime); }
             base.Draw(gameTime);
         }
     }
