@@ -9,4 +9,12 @@ namespace dcsg.Managers
     {
         DEFAULT
     }
+
+	enum LayerDepth
+	{
+		Floor = 0,
+		Walls = 1,
+		Player = 2,
+		Roof = 3
+	}
 }

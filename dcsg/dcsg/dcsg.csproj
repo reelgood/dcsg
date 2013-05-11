@@ -73,7 +73,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DCSG.cs" />
+    <Compile Include="GameObject\Component\Camera.cs" />
+    <Compile Include="GameObject\Component\Component.cs" />
+    <Compile Include="GameObject\Component\SpriteRenderer.cs" />
+    <Compile Include="GameObject\Component\Transform.cs" />
     <Compile Include="GameObject\GameObject.cs" />
+    <Compile Include="GameObject\GameObjectBase.cs" />
     <Compile Include="Managers\Enums.cs" />
     <Compile Include="Managers\Extensions.cs" />
     <Compile Include="Managers\Fonts.cs" />
