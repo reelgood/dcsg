@@ -14,8 +14,15 @@ namespace dcsg.Engine
 		
 		protected bool taggedForDestruction = false;
 		protected static List<GameObject> _gameObjects = new List<GameObject>();
+        static GameObjectBase _standardGameObjectBase;
 		protected GameObjectBase()
 		{
+            if (_standardGameObjectBase == null)
+            {
+                _standardGameObjectBase = this;
+                DCSG.OnUpdate += new DCSG.XNAHookEvent(Update);
+                DCSG.OnDraw += new DCSG.XNADrawEvent(Draw);
+            }
 			_gameObjects.Add((GameObject)this);
 		}
 		
@@ -23,7 +30,7 @@ namespace dcsg.Engine
 		protected virtual void _internalDraw(SpriteBatch sBatch) { }
 		protected virtual void _onDraw() { }
 		
-		static public void Update()
+		static void Update()
 		{
 			for (int i = 0; i < _gameObjects.Count; i++)
 			{
@@ -43,7 +50,7 @@ namespace dcsg.Engine
 
 		}
 
-		static public void Draw(SpriteBatch sBatch)
+		static void Draw(SpriteBatch sBatch)
 		{
 			sBatch.Begin();
 			for (int i = 0; i < _gameObjects.Count; i++)
