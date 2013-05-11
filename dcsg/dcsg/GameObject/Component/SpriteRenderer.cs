@@ -8,7 +8,7 @@ using dcsg.Managers;
 
 namespace dcsg.gObj
 {
-	class SpriteRenderer : Component
+	public class SpriteRenderer : Component
 	{
 		private Texture2D _sprite;
 		private Rectangle _sourceRect = Rectangle.Empty;

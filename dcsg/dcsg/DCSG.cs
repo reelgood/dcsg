@@ -82,7 +82,7 @@ namespace dcsg
             GraphicsDevice.Clear(Color.Black);
             if (_loadedScreen != null) { _loadedScreen.Draw(gameTime); }
 			GameObjectBase.Draw(spriteBatch);
-            base.Draw(gameTime);
-        }
-    }
+			base.Draw(gameTime);
+		}
+	}
 }

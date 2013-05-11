@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework;
 
 namespace dcsg.gObj
 {
-	class Transform : Component
+	public class Transform : Component
 	{
 		#region Fields
 		private List<Transform> _children = new List<Transform>();
