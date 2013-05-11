@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 
-namespace dcsg.gObj
+namespace dcsg.Engine
 {
 	public class GameObjectBase
 	{

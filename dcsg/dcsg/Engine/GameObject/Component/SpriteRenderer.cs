@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using dcsg.Managers;
 
-namespace dcsg.gObj
+namespace dcsg.Engine
 {
 	public class SpriteRenderer : Component
 	{

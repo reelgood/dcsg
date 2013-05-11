@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
-namespace dcsg.gObj
+namespace dcsg.Engine
 {
 	public class Camera : Component
 	{

@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System.Collections;
 
-namespace dcsg.Managers
+namespace dcsg.Engine
 {
     public static class Inputhandler
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 
-namespace dcsg.Managers.SubClasses
+namespace dcsg.Engine
 {
 	public class AnimationFrame
 	{

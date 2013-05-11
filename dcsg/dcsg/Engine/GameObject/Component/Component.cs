@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace dcsg.gObj
+namespace dcsg.Engine
 {
 	public class Component
 	{

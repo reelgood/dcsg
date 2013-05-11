@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using dcsg.Managers;
+using dcsg.Engine;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
@@ -9,8 +9,6 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
-using dcsg.gObj;
-
 
 namespace dcsg
 {
@@ -49,13 +47,13 @@ namespace dcsg
         protected override void Initialize()
         {
 			Textures.Initialize();
-            Inputhandler.BindKey(Managers.Keybindmode.KEYUP, Keys.Escape, delegate(Keybindmode kbm) { this.Exit(); });
+            Inputhandler.BindKey(Keybindmode.KEYUP, Keys.Escape, delegate(Keybindmode kbm) { this.Exit(); });
             base.Initialize();
         }
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            _loadedScreen = new dcsg.Screens.Mainmenu();
+            _loadedScreen = new dcsg.Game.Aleks.Mainmenu();
             Fonts.LoadFont("mainfont");
             Fonts.LoadFont("std");
 

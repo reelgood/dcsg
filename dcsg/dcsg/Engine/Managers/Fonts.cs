@@ -6,7 +6,7 @@ using System.Xml;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace dcsg.Managers
+namespace dcsg.Engine
 {
     public static class Fonts
     {
