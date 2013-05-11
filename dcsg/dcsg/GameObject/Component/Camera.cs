@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework;
 
 namespace dcsg.gObj
 {
-	class Camera : Component
+	public class Camera : Component
 	{
 		static public Camera mainCamera;
 

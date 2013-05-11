@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace dcsg.gObj
 {
-	class GameObject : GameObjectBase
+	public class GameObject : GameObjectBase
 	{
 		public bool enabled;       
 		public string name;

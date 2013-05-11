@@ -5,7 +5,7 @@ using System.Text;
 
 namespace dcsg.gObj
 {
-	class Component
+	public class Component
 	{
 		public bool enabled = true;
 

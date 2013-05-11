@@ -21,3 +21,10 @@ namespace dcsg.Managers
         }
     }
 }
+
+/*
+ * Load inn all big texture files
+ * Read XML documentation for what sprite goes where, aswell as animation information
+ * Assign Texture and AnimationTexture classes based on XML documentation
+ * Need a list/hashtable of all textures
+*/
