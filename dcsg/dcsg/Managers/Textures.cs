@@ -19,6 +19,7 @@ namespace dcsg.Managers
 
             _init = true;
             NullTexture = new Texture2D(DCSG.MainObject.GraphicsDevice, 1, 1);
+            pointerDefault = DCSG.Contents.Load<Texture2D>("Textures\\pointer");
         }
     }
 }

@@ -12,14 +12,16 @@ namespace dcsg.Managers
     {
         static XmlDocument FontDocument;
         static List<Font> LoadedFonts = new List<Font>();
-        public static void LoadFont(string fontName)
+        public static void LoadFont(string fontName, string sfDirectory = "Spritefonts")
         {
-            if (!System.IO.File.Exists(DCSG.Contents.RootDirectory + "\\" + fontName + ".fnt"))
+            if (sfDirectory.Substring(sfDirectory.Length - 1, 1) != "\\") { sfDirectory += "\\"; }
+            if (!System.IO.File.Exists(DCSG.Contents.RootDirectory + "\\" + sfDirectory + fontName + ".fnt"))
                 throw new System.IO.FileNotFoundException("No font file associated with " + fontName);
             if (FontDocument == null)
                 FontDocument = new XmlDocument();
-            FontDocument.Load(DCSG.Contents.RootDirectory + "\\" + fontName + ".fnt");
+            FontDocument.Load(DCSG.Contents.RootDirectory + "\\" + sfDirectory + fontName + ".fnt");
             XmlNode font = FontDocument.FirstChild;
+            if (font.Name == "xml") { font = FontDocument.ChildNodes[1]; }
             if (font.Name != "font")
                 throw new XmlException("Wrong first node in font file");
 
@@ -57,7 +59,7 @@ namespace dcsg.Managers
                         break;
                 }
             }
-            nf.texture = DCSG.Contents.Load<Texture2D>(fontName);
+            nf.texture = DCSG.Contents.Load<Texture2D>(sfDirectory + fontName);
             nf.Name = new System.IO.FileInfo(DCSG.Contents.RootDirectory + "\\" + fontName + ".fnt").Name.Replace(".fnt", "");
             LoadedFonts.Add(nf);
             Console.WriteLine(nf.Name);

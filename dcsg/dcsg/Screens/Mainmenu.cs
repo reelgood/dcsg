@@ -19,9 +19,11 @@ namespace dcsg.Screens
         {
             base.Update(gt);
         }
-        public override void Draw(GameTime gameTime)
+        protected override void InternalDraw(GameTime gameTime)
         {
-            base.Draw(gameTime);
+            sb.WriteString(Fonts.GetFont("mainfont"), "DCSG", (DCSG.ScreenWidth / 2) - (Fonts.GetFont("mainfont").LengthOfString("DCSG", 2f) / 2), 100, Color.Salmon, 2f);
+            sb.WriteString(Fonts.GetFont("std"), "Dungeon Crawler Survival Game", (DCSG.ScreenWidth / 2) - (Fonts.GetFont("std").LengthOfString("Dungeon Crawler Survival Game", 2f) / 2), 230, Color.Red, 2f);
+            base.InternalDraw(gameTime);
         }
     }
 }

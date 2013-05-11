@@ -24,6 +24,8 @@ namespace dcsg
         public Screen ActiveScreen { get { return _loadedScreen; } }
         public static DCSG MainObject { get { return _mgo; } }
         public static ContentManager Contents { get { return _mgo.Content; } }
+        public static int ScreenWidth { get { return DCSG.MainObject.GraphicsDevice.Viewport.Width; } }
+        public static int ScreenHeight { get { return DCSG.MainObject.GraphicsDevice.Viewport.Height; } }
         public DCSG()
         {
             if (_mgo != null)
@@ -31,6 +33,12 @@ namespace dcsg
             _mgo = this;
 
             graphics = new GraphicsDeviceManager(this);
+            graphics.PreferredBackBufferWidth = 1920;
+            graphics.PreferredBackBufferHeight = 1080;
+            graphics.SynchronizeWithVerticalRetrace = false;
+            IsFixedTimeStep = false;
+
+            graphics.IsFullScreen = true;
             Content.RootDirectory = "Content";
         }
         protected override void Initialize()
@@ -42,6 +50,8 @@ namespace dcsg
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             _loadedScreen = new dcsg.Screens.Mainmenu();
+            Fonts.LoadFont("mainfont");
+            Fonts.LoadFont("std");
         }
         protected override void UnloadContent()
         {
@@ -53,7 +63,10 @@ namespace dcsg
 
             Inputhandler.Update(gameTime); //Inputhandling first
             if (_loadedScreen != null) { _loadedScreen.Update(gameTime); }
-            
+
+            if (50000 - gameTime.ElapsedGameTime.Ticks > 0)
+                System.Threading.Thread.Sleep(new TimeSpan(50000 - gameTime.ElapsedGameTime.Ticks));
+
             base.Update(gameTime);
         }
         protected override void Draw(GameTime gameTime)
