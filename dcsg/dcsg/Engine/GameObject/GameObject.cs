@@ -28,7 +28,6 @@ namespace dcsg.Engine
 			AddComponent(typeof(Transform));
 		}
 
-
 		protected override void _internalUpdate()
 		{
 			if (!enabled) return;

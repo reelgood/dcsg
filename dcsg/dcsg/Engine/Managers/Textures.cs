@@ -7,21 +7,21 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace dcsg.Engine
 {
-    public static class Textures
-    {
-        static bool _init = false;
-        public static Texture2D pointerDefault;
-        public static Texture2D NullTexture;
-        public static void Initialize()
-        {
-            if (_init)
-                return;
+	public static class Textures
+	{
+		static bool _init = false;
+		public static Texture2D pointerDefault;
+		public static Texture2D NullTexture;
+		public static void Initialize()
+		{
+			if (_init)
+				return;
 
-            _init = true;
-            NullTexture = new Texture2D(DCSG.MainObject.GraphicsDevice, 1, 1);
-            pointerDefault = DCSG.Contents.Load<Texture2D>("Textures\\pointer");
-        }
-    }
+			_init = true;
+			NullTexture = new Texture2D(DCSG.MainObject.GraphicsDevice, 1, 1);
+			pointerDefault = DCSG.Contents.Load<Texture2D>("Textures\\pointer");
+		}
+	}
 }
 
 /*

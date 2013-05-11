@@ -1,46 +1,145 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace dcsg.Engine
 {
 	public class Sprite
 	{
-		bool isAnimation;
-		bool unifromAnimation;
-		int numFrames;
-		float animationSpeed;
+		private bool _isAnimation;
+		private bool _isUniform;
+		private int _numFrames;
+		private float _animationSpeed;
 
-		Texture2D baseTexture;
-		Rectangle sourceRect;
-		Vector2 origin;
+		private Texture2D _baseTexture;
+		private Rectangle _sourceRect;
+		private Vector2 _origin;
 
-		AnimationFrame[] animationFrames;
+		private AnimationFrame[] _animFrames;
 
-		// If its a uniform animation, origin, rect etc is the same for each frame, just increased by frame.width
+		private int _currentFrame = 0;
+		private float _startTime;
+		private float _frameTime;
+		private float _timeTilNextFrame;
+
+		public int Frame { get { return _currentFrame; } set { _currentFrame = value; _frameTime = 0; } }
 
 
-		public void StartAnimation()
+		/// <summary>
+		/// Creates a new sprite, without any animation information
+		/// </summary>
+		/// <param name="baseTexture">The base texture file this sprite is located on</param>
+		/// <param name="SourceRect">The source rectangle of the sprite</param>
+		/// <param name="Origin">The origin of the sprite</param>
+		public Sprite(Texture2D baseTexture, Rectangle SourceRect, Vector2 Origin)
+		{
+			this._baseTexture = baseTexture;
+			this._sourceRect = SourceRect;
+			this._origin = Origin;
+
+			this._isAnimation = false;
+			this._isUniform = false;
+
+			this._animationSpeed = 0;
+			this._numFrames = 0;
+			this._animFrames = null;
+		}
+
+		/// <summary>
+		/// Creates a new sprite with a uniform animation
+		/// </summary>
+		/// <param name="baseTexture">The base texture file this sprite is located on</param>
+		/// <param name="SourceRect">The source rectangle of the first frame</param>
+		/// <param name="Origin">The origin of the first frame</param>
+		/// <param name="NumFrames">The number of frames in the animation</param>
+		/// <param name="AnimationSpeed">The speed of the animation, measured in frame/second</param>
+		public Sprite(Texture2D baseTexture, Rectangle SourceRect, Vector2 Origin, int NumFrames, float AnimationSpeed)
+		{
+			this._baseTexture = baseTexture;
+			this._sourceRect = SourceRect;
+			this._origin = Origin;
+			this._numFrames = NumFrames;
+			if (NumFrames < 1) throw new Exception("Need more then 1 frame in a animation");
+			this._animationSpeed = AnimationSpeed;
+
+			this._isAnimation = true;
+			this._isUniform = true;
+			this._animFrames = null;
+		}
+
+		/// <summary>
+		/// Creates a new sprite with a non-uniform animation
+		/// </summary>
+		/// <param name="baseTexture">The base texture file this sprite is located on</param>
+		/// <param name="animationFrames">Datavalues of all the animation frames</param>
+		/// <param name="AnimationSpeed">The speed of the animation, measured in frames/second</param>
+		public Sprite(Texture2D baseTexture, AnimationFrame[] animationFrames, float AnimationSpeed)
+		{
+			this._baseTexture = baseTexture;
+			this._animationSpeed = AnimationSpeed;
+			this._animFrames = animationFrames;
+
+			this._numFrames = _animFrames.Length;
+			if (_numFrames < 1) throw new Exception("Need more then 1 frame in a animation");
+
+			this._isAnimation = true;
+			this._isUniform = false;
+
+			this._origin = _animFrames[0].origin;
+			this._sourceRect = _animFrames[0].sourceRect;
+		}
+
+		public void Play()
 		{
 
 		}
 
-		public void StopAnimation()
+		public void Pause()
 		{
 
 		}
 
-		public void GetFrame()
+		public void Restart()
 		{
-		
+
 		}
 
-		public void DrawSprite(SpriteBatch sBatch)
+		/// <summary>
+		/// Sets the speed of the animation in frames per second.
+		/// Can be > 0 for reversing animation
+		/// </summary>
+		/// <param name="AnimationSpeed"></param>
+		public void SetSpeed(float AnimationSpeed)
 		{
+			
+		}
 
+		/// <summary>
+		/// Gets the current active frame based on animation speed
+		/// </summary>
+		/// <returns>The active frame number</returns>
+		private int GetCurrentFrame()
+		{
+			// Check if reversed
+			// Check "distance" from "last frame" timestamp
+			// Update "Last Frame" timestamp if we return a new frame
+			return 0;
+		}
+
+		private Rectangle GetRect()
+		{
+			// If its not uniforme it needs to get rect information from its animationFrames array
+			// Else get input sourcerect + sourcerect.width*current framenumber
+			// If at max framenumber, it needs to reset framenumber, or ociliate if thats the case
+
+			return Rectangle.Empty;
+		}
+
+		private Vector2 GetOrigin()
+		{
+			// Same as GetRect just with origin.
+
+			return Vector2.Zero;
 		}
 	}
 }
