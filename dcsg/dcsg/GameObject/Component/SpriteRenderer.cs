@@ -16,7 +16,7 @@ namespace dcsg.gObj
 		private Vector2 _origin = Vector2.Zero;
 		private SpriteEffects _spriteEffects = SpriteEffects.None;
 		private LayerDepth _layerDepth = LayerDepth.Floor;
-
+		
 		public void SetSprite(Texture2D sprite)
 		{
 			if (_sprite != null) _sprite = null;
@@ -40,17 +40,17 @@ namespace dcsg.gObj
 		public void Draw(SpriteBatch sBatch)
 		{
 			// Cant render if there is no main camera
-		//	if (Camera.mainCamera == null) return;
+			if (Camera.mainCamera == null) return;
 			if (_sprite == null) return;
 			
 			// TODO: offset draw by the camera position
 			sBatch.Draw(_sprite,
-						transform.position, // - camera position? * zoom level?
+						transform.worldPosition - Camera.mainCamera.cameraPosition, // - camera position? * zoom level?
 						_sourceRect,
 						_color,
 						transform.rotation, // - camera rotation?
 						_origin,
-						transform.scale, // * camera zoomlvl
+						transform.scale, // Should add zooming, although that needs to increase speed aswell
 						_spriteEffects,
 						(float)_layerDepth);
 		}

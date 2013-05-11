@@ -6,7 +6,7 @@ namespace dcsg.gObj
 {
 	class GameObject : GameObjectBase
 	{
-		public bool enabled;
+		public bool enabled;       
 		public string name;
 		private List<Component> _components;
 
@@ -15,6 +15,9 @@ namespace dcsg.gObj
 
 		private SpriteRenderer _renderer;
 		public SpriteRenderer renderer { get { return _renderer; } }
+
+		private Camera _camera;
+		public Camera camera { get { return _camera; } }
 
 		public GameObject(string name)
 			: base()
@@ -39,6 +42,7 @@ namespace dcsg.gObj
 		protected override void _internalDraw(SpriteBatch sBatch)
 		{
 			if (!enabled) return;
+			if (renderer == null) return;
 			if (!renderer.enabled) return;
 			renderer.Draw(sBatch);
 		}
@@ -77,6 +81,7 @@ namespace dcsg.gObj
 			Component c = Activator.CreateInstance(componentType) as Component;
 			if (c is Transform) _transform = (Transform)c;
 			if (c is SpriteRenderer) _renderer = (SpriteRenderer)c;
+			if (c is Camera) _camera = (Camera)c;
 			
 			_components.Add(c);
 			c.gameObject = this;

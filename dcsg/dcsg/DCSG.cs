@@ -41,6 +41,10 @@ namespace dcsg
         }
 
 		GameObject gob;
+		GameObject gob2;
+		GameObject gob3;
+
+		GameObject mainCamera;
 
         protected override void LoadContent()
         {
@@ -50,6 +54,19 @@ namespace dcsg
 			gob = new GameObject("test");
 			gob.AddComponent(typeof(SpriteRenderer));
 			gob.renderer.SetSprite(testTex);
+
+			gob2 = new GameObject("test");
+			gob2.AddComponent(typeof(SpriteRenderer));
+			gob2.renderer.SetSprite(testTex);
+
+			gob3 = new GameObject("test");
+			gob3.AddComponent(typeof(SpriteRenderer));
+			gob3.renderer.SetSprite(testTex);
+
+			mainCamera = new GameObject("Main Camera");
+			mainCamera.AddComponent(typeof(Camera));
+
+			//mainCamera.transform.parent = gob.transform;
         }
         protected override void UnloadContent()
         {
@@ -75,6 +92,44 @@ namespace dcsg
 				gob.transform.Rotate(0.1f);
 			if (Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.E))
 				gob.transform.Rotate(-0.1f);
+
+			if (Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.F1))
+			{
+				gob2.transform.parent = gob.transform;
+			}
+			if (Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.F2))
+			{
+				gob2.transform.parent = null;
+			}
+			if (Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.F3))
+			{
+				gob3.transform.parent = gob2.transform;
+			}
+
+			if (Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.F4))
+			{
+				gob3.transform.parent = null;
+			}
+
+			if (Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Up))
+			{
+				gob2.transform.Translate(0, -1);
+			}
+
+			if (Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Down))
+			{
+				gob2.transform.Translate(0, 1);
+			}
+
+			if (Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Left))
+			{
+				gob2.transform.Translate(-1, 0);
+			}
+
+			if (Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Right))
+			{
+				gob2.transform.Translate(1, 0);
+			}
 
 			GameObjectBase.Update();
             base.Update(gameTime);
