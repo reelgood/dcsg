@@ -17,19 +17,25 @@ namespace dcsg
     /// </summary>
     public class DCSG : Microsoft.Xna.Framework.Game
     {
-        //PRIVATES
+
+        #region Private Variable Declarations
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         static DCSG _mgo;
-        Screen _loadedScreen;
         GameObject mainCamera;
+        #endregion
 
-        //PUBLICS
-        public Screen ActiveScreen { get { return _loadedScreen; } }
+        #region Public Variable Declarations
+        public delegate void XNAHookEvent();
+        public delegate void XNADrawEvent(SpriteBatch sb);
+        public static event XNAHookEvent OnUpdate;
+        public static event XNADrawEvent OnDraw;
+
         public static DCSG MainObject { get { return _mgo; } }
         public static ContentManager Contents { get { return _mgo.Content; } }
         public static int ScreenWidth { get { return DCSG.MainObject.GraphicsDevice.Viewport.Width; } }
         public static int ScreenHeight { get { return DCSG.MainObject.GraphicsDevice.Viewport.Height; } }
+        #endregion
 
         public DCSG()
         {
@@ -46,30 +52,32 @@ namespace dcsg
         }
         protected override void Initialize()
         {
-			Textures.Initialize();
-            Inputhandler.BindKey(Keybindmode.KEYUP, Keys.Escape, delegate(Keybindmode kbm) { this.Exit(); });
             base.Initialize();
         }
         protected override void LoadContent()
         {
+            Initializer.Initialize(); //Initialize Everything
+            Inputhandler.BindKey(Keybindmode.KEYUP, Keys.Escape, delegate(Keybindmode kbm) { this.Exit(); });
+
+
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            _loadedScreen = new dcsg.Game.Aleks.Mainmenu();
             Fonts.LoadFont("mainfont");
             Fonts.LoadFont("std");
+
+            Time.StartTimer(delegate { this.Exit(); }, 2f);
 
 			mainCamera = new GameObject("Main Camera");
 			mainCamera.AddComponent(typeof(Camera));
         }
         protected override void UnloadContent()
         {
-
+            
         }
         protected override void Update(GameTime gameTime)
         {
-            Inputhandler.Update(gameTime); //Inputhandling first
-            if (_loadedScreen != null) { _loadedScreen.Update(gameTime); }
+            if (OnUpdate != null) { OnUpdate(); }
 			GameObjectBase.Update();
-
+            
             if (50000 - gameTime.ElapsedGameTime.Ticks > 0)
                 System.Threading.Thread.Sleep(new TimeSpan(50000 - gameTime.ElapsedGameTime.Ticks));
 
@@ -78,7 +86,7 @@ namespace dcsg
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
-            if (_loadedScreen != null) { _loadedScreen.Draw(gameTime); }
+            if (OnDraw != null) { OnDraw(spriteBatch); }
 			GameObjectBase.Draw(spriteBatch);
 			base.Draw(gameTime);
 		}

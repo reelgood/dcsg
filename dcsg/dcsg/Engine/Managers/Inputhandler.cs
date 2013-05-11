@@ -8,17 +8,27 @@ using System.Collections;
 
 namespace dcsg.Engine
 {
-    public static class Inputhandler
+    public class Inputhandler
     {
-        public delegate void KeyCallback(Keybindmode keyMode);
+        static Inputhandler mainIh;
+        public Inputhandler()
+        {
+            if (mainIh != null) { throw new NullReferenceException("Inputhandler object created twice"); }
+            DCSG.OnUpdate += new DCSG.XNAHookEvent(Update);
+            mainIh = this;
+        }
+
         static MouseState prev_ms;
         static MouseState ms = Mouse.GetState();
         static KeyboardState ks = Keyboard.GetState();
         static KeyboardState prev_ks;
         static Point _mp;
         static Hashtable key_ht = new Hashtable();
+
+        public delegate void KeyCallback(Keybindmode keyMode);
         public static Point Mousepoint { get { return _mp; } }
-        public static void Update(Microsoft.Xna.Framework.GameTime gt)
+
+        void Update()
         {
             prev_ms = ms;
             ms = Mouse.GetState();

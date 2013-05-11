@@ -15,15 +15,15 @@ namespace dcsg.Game.Aleks
             : base()
         {
         }
-        public override void Update(GameTime gt)
+        protected override void Update()
         {
-            base.Update(gt);
+            base.Update();
         }
-        protected override void InternalDraw(GameTime gameTime)
+        protected override void InternalDraw()
         {
-            sb.WriteString(Fonts.GetFont("mainfont"), "DCSG", (DCSG.ScreenWidth / 2) - (Fonts.GetFont("mainfont").LengthOfString("DCSG", 2f) / 2), 100, Color.Salmon, 2f);
-            sb.WriteString(Fonts.GetFont("std"), "Dungeon Crawler Survival Game", (DCSG.ScreenWidth / 2) - (Fonts.GetFont("std").LengthOfString("Dungeon Crawler Survival Game", 2f) / 2), 230, Color.Red, 2f);
-            base.InternalDraw(gameTime);
+            //sb.WriteString(Fonts.GetFont("mainfont"), "DCSG", (DCSG.ScreenWidth / 2) - (Fonts.GetFont("mainfont").LengthOfString("DCSG", 2f) / 2), 100, Color.Salmon, 2f);
+            //sb.WriteString(Fonts.GetFont("std"), "Dungeon Crawler Survival Game", (DCSG.ScreenWidth / 2) - (Fonts.GetFont("std").LengthOfString("Dungeon Crawler Survival Game", 2f) / 2), 230, Color.Red, 2f);
+            base.InternalDraw();
         }
     }
 }

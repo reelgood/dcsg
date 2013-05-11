@@ -12,22 +12,23 @@ namespace dcsg.Engine
     {
         protected SpriteBatch sb;
         PointerType _pointer;
+        static Screen _activescreen;
+        public static Screen ActiveScreen { get { return _activescreen; } }
         public Screen()
         {
             _pointer = PointerType.DEFAULT;
             sb = new SpriteBatch(DCSG.MainObject.GraphicsDevice);
+            DCSG.OnUpdate += new DCSG.XNAHookEvent(Update);
+            DCSG.OnDraw += new DCSG.XNADrawEvent(Draw);
         }
-        public virtual void Update(GameTime gameTime)
-        {
-
-        }
-        public void Draw(GameTime gameTime)
+        protected virtual void Update() { }
+        void Draw(SpriteBatch sb)
         {
             sb.Begin(SpriteSortMode.BackToFront, BlendState.NonPremultiplied, SamplerState.PointClamp, DCSG.MainObject.GraphicsDevice.DepthStencilState, DCSG.MainObject.GraphicsDevice.RasterizerState);
-            InternalDraw(gameTime);
+            InternalDraw();
             sb.End();
         }
-        protected virtual void InternalDraw(GameTime gameTime)
+        protected virtual void InternalDraw()
         {
             MouseState ms = Mouse.GetState();
             float scale = 2f;
@@ -41,7 +42,7 @@ namespace dcsg.Engine
                     textToDraw = Textures.pointerDefault; xOffset = -2;
                     break;
             }
-            sb.Draw(textToDraw, new Rectangle(ms.X + (int)((float)xOffset * scale), ms.Y + yOffset, (int)((float)textToDraw.Width * scale), (int)((float)textToDraw.Height * scale)), Color.White);
+            //sb.Draw(textToDraw, new Rectangle(ms.X + (int)((float)xOffset * scale), ms.Y + yOffset, (int)((float)textToDraw.Width * scale), (int)((float)textToDraw.Height * scale)), Color.White);
         }
     }
 }
