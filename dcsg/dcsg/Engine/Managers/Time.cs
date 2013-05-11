@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using System.Diagnostics;
 
 namespace dcsg.Engine.Alarm
 {
@@ -62,7 +63,7 @@ namespace dcsg.Engine
         {
             get
             {
-                return (float)(diff.Ticks / 10000000.0);
+                return (float)((decimal)diff.Ticks / (decimal)10000000.0);
             }
         }
         /// <summary>

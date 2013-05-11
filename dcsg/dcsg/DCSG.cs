@@ -22,6 +22,7 @@ namespace dcsg
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         static DCSG _mgo;
+        static int _fps = 100;
         GameObject mainCamera;
         #endregion
 
@@ -33,6 +34,7 @@ namespace dcsg
 
         public static DCSG MainObject { get { return _mgo; } }
         public static ContentManager Contents { get { return _mgo.Content; } }
+        public static int TargetFrameRate { get { return _fps; } set { _fps = value; } }
         public static int ScreenWidth { get { return DCSG.MainObject.GraphicsDevice.Viewport.Width; } }
         public static int ScreenHeight { get { return DCSG.MainObject.GraphicsDevice.Viewport.Height; } }
         #endregion
@@ -56,15 +58,8 @@ namespace dcsg
         }
         protected override void LoadContent()
         {
-            Initializer.Initialize(); //Initialize Everything
-            Inputhandler.BindKey(Keybindmode.KEYUP, Keys.Escape, delegate(Keybindmode kbm) { this.Exit(); });
-
-
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            Fonts.LoadFont("mainfont");
-            Fonts.LoadFont("std");
-
-            Time.StartTimer(delegate { this.Exit(); }, 2f);
+            Initializer.Initialize(); //Initialize Everything
 
 			mainCamera = new GameObject("Main Camera");
 			mainCamera.AddComponent(typeof(Camera));
@@ -76,10 +71,9 @@ namespace dcsg
         protected override void Update(GameTime gameTime)
         {
             if (OnUpdate != null) { OnUpdate(); }
-			GameObjectBase.Update();
-            
-            if (50000 - gameTime.ElapsedGameTime.Ticks > 0)
-                System.Threading.Thread.Sleep(new TimeSpan(50000 - gameTime.ElapsedGameTime.Ticks));
+
+            if ((double)(10000000.0 / (double)_fps) - (double)gameTime.ElapsedGameTime.Ticks > 0.0)
+                System.Threading.Thread.Sleep(new TimeSpan((long)((10000000.0 / (double)_fps) - (double)gameTime.ElapsedGameTime.Ticks)));
 
             base.Update(gameTime);
         }
@@ -87,7 +81,6 @@ namespace dcsg
         {
             GraphicsDevice.Clear(Color.Black);
             if (OnDraw != null) { OnDraw(spriteBatch); }
-			GameObjectBase.Draw(spriteBatch);
 			base.Draw(gameTime);
 		}
 	}

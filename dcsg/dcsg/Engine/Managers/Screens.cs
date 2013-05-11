@@ -22,7 +22,7 @@ namespace dcsg.Engine
             DCSG.OnDraw += new DCSG.XNADrawEvent(Draw);
         }
         protected virtual void Update() { }
-        void Draw(SpriteBatch sb)
+        void Draw(SpriteBatch _sb)
         {
             sb.Begin(SpriteSortMode.BackToFront, BlendState.NonPremultiplied, SamplerState.PointClamp, DCSG.MainObject.GraphicsDevice.DepthStencilState, DCSG.MainObject.GraphicsDevice.RasterizerState);
             InternalDraw();
@@ -42,7 +42,7 @@ namespace dcsg.Engine
                     textToDraw = Textures.pointerDefault; xOffset = -2;
                     break;
             }
-            //sb.Draw(textToDraw, new Rectangle(ms.X + (int)((float)xOffset * scale), ms.Y + yOffset, (int)((float)textToDraw.Width * scale), (int)((float)textToDraw.Height * scale)), Color.White);
+            sb.Draw(textToDraw, new Rectangle(ms.X + (int)((float)xOffset * scale), ms.Y + yOffset, (int)((float)textToDraw.Width * scale), (int)((float)textToDraw.Height * scale)), Color.White);
         }
     }
 }

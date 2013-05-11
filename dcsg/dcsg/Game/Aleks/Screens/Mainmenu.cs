@@ -11,18 +11,22 @@ namespace dcsg.Game.Aleks
 {
     public class Mainmenu : Screen
     {
+        float _secCount = 0;
         public Mainmenu()
             : base()
         {
         }
         protected override void Update()
         {
+            _secCount += Time.DeltaTime;
             base.Update();
         }
         protected override void InternalDraw()
         {
-            //sb.WriteString(Fonts.GetFont("mainfont"), "DCSG", (DCSG.ScreenWidth / 2) - (Fonts.GetFont("mainfont").LengthOfString("DCSG", 2f) / 2), 100, Color.Salmon, 2f);
-            //sb.WriteString(Fonts.GetFont("std"), "Dungeon Crawler Survival Game", (DCSG.ScreenWidth / 2) - (Fonts.GetFont("std").LengthOfString("Dungeon Crawler Survival Game", 2f) / 2), 230, Color.Red, 2f);
+            sb.WriteString(Fonts.GetFont("mainfont"), "DCSG", (DCSG.ScreenWidth / 2) - (Fonts.GetFont("mainfont").LengthOfString("DCSG", 2f) / 2), 100, Color.Salmon, 2f);
+            sb.WriteString(Fonts.GetFont("std"), "Dungeon Crawler Survival Game", (DCSG.ScreenWidth / 2) - (Fonts.GetFont("std").LengthOfString("Dungeon Crawler Survival Game", 2f) / 2), 230, Color.Red, 2f);
+            //sb.WriteString(Fonts.GetFont("std"), "DTC: " + _secCount.ToString(), 5, 5, Color.White, 2f);
+            //sb.WriteString(Fonts.GetFont("std"), "ETC: " + Time.ElapsedTime.ToString(), 5, 55, Color.White, 2f);
             base.InternalDraw();
         }
     }
