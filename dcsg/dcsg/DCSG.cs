@@ -24,7 +24,9 @@ namespace dcsg
         static DCSG _mgo;
         static int _fps = 100;
         GameObject mainCamera;
-        #endregion
+		static public string exeDir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+		static public string textureDir = exeDir + "/Data/Textures";
+		#endregion
 
         #region Public Variable Declarations
         public delegate void XNAHookEvent();
@@ -45,12 +47,13 @@ namespace dcsg
                 throw new InstancePlayLimitException("MainGame started twice. This is not possible!");
             _mgo = this;
             graphics = new GraphicsDeviceManager(this);
-            graphics.PreferredBackBufferWidth = 1920;
-            graphics.PreferredBackBufferHeight = 1080;
+            graphics.PreferredBackBufferWidth = 800;
+            graphics.PreferredBackBufferHeight = 600;
             graphics.SynchronizeWithVerticalRetrace = false;
             IsFixedTimeStep = false;
-            graphics.IsFullScreen = true;
+            graphics.IsFullScreen = false;
             Content.RootDirectory = "Content";
+			
         }
         protected override void Initialize()
         {

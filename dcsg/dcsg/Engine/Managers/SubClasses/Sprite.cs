@@ -16,12 +16,6 @@ namespace dcsg.Engine
 		private Vector2 _origin;
 
 		private AnimationFrame[] _animFrames;
-
-		private int _currentFrame = 0;
-		private float _startTime;
-		private float _frameTime;
-		private float _timeTilNextFrame;
-
 		public int Frame { get { return _currentFrame; } set { _currentFrame = value; _frameTime = 0; } }
 
 
@@ -89,14 +83,23 @@ namespace dcsg.Engine
 			this._sourceRect = _animFrames[0].sourceRect;
 		}
 
+
+		private int _currentFrame = 0;
+		private float _startTime;
+		private float _frameTime;
+		private float _timeTilNextFrame;
+
+		private bool isPlaying = false;
+
 		public void Play()
 		{
-
+			_startTime = Time.ElapsedTime;
+			isPlaying = true;
 		}
 
 		public void Pause()
 		{
-
+			isPlaying = false;
 		}
 
 		public void Restart()
