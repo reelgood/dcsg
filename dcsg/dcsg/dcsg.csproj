@@ -104,6 +104,12 @@
     <Compile Include="Engine\Managers\SubClasses\Sprite.cs" />
     <Compile Include="Engine\Managers\Textures.cs" />
     <Compile Include="Engine\Managers\Time.cs" />
+    <Compile Include="Game\Aleks\GUI\GUIButton.cs" />
+    <Compile Include="Game\Aleks\GUI\GUIElement.cs" />
+    <Compile Include="Game\Aleks\GUI\GUIInput.cs" />
+    <Compile Include="Game\Aleks\GUI\GUILabel.cs" />
+    <Compile Include="Game\Aleks\GUI\GUILayout.cs" />
+    <Compile Include="Game\Aleks\GUI\GUISkin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game\Aleks\Screens\Mainmenu.cs" />

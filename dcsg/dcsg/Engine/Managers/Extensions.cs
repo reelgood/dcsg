@@ -9,15 +9,15 @@ namespace dcsg.Engine
 {
     public static class ExtensionMethods
     {
-        public static bool Contains(this Rectangle v, Point point)
-        {
+        /*public static bool Contains(this Rectangle v, Point point)
+        { //THIS PIECE OF CODE ALLREADY EXISTS! STUPID ME.... :P
             if (point.X > v.X &&
                 point.Y > v.Y &&
                 point.X < v.X + v.Width &&
                 point.Y < v.Y + v.Height)
                 return true;
             return false;
-        }
+        }*/
         public static void WriteString(this SpriteBatch sb, string writefont, string text, int x, int y, Color color, float scale = 1f)
         {
             WriteString(sb, Fonts.GetFont(writefont), text, x, y, color, scale);

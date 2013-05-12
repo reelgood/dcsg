@@ -10,11 +10,26 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
+/***********************************************
+ * 
+ *      TO DO LIST:
+ *          * Fix "Activescreen" Screen
+ *          * Replace Sounds with importer like textureloader (ole makes)
+ *          * Make GUI buttons use a GUISkin class which has a default
+ *          * Make multiple draw/update hooks for priority, or make some kind of prioritizing.
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * *********************************************/
+
 namespace dcsg
 {
-    /// <summary>
-    /// This is the main type for your game
-    /// </summary>
     public class DCSG : Microsoft.Xna.Framework.Game
     {
 
@@ -45,11 +60,11 @@ namespace dcsg
                 throw new InstancePlayLimitException("MainGame started twice. This is not possible!");
             _mgo = this;
             graphics = new GraphicsDeviceManager(this);
-            graphics.PreferredBackBufferWidth = 1920;
-            graphics.PreferredBackBufferHeight = 1080;
+            graphics.PreferredBackBufferWidth = 900; //1920;
+            graphics.PreferredBackBufferHeight = 700; //1080;
             graphics.SynchronizeWithVerticalRetrace = false;
             IsFixedTimeStep = false;
-            graphics.IsFullScreen = true;
+            //graphics.IsFullScreen = true;
             Content.RootDirectory = "Content";
         }
         protected override void Initialize()

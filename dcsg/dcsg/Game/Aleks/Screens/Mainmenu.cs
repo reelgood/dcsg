@@ -15,6 +15,7 @@ namespace dcsg.Game.Aleks
         public Mainmenu()
             : base()
         {
+            //Game.Aleks.GUI.GUIButton btn = new GUI.GUIButton(new Rectangle(5,50,1800,100));
         }
         protected override void Update()
         {
