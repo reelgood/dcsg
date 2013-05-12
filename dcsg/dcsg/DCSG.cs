@@ -49,7 +49,7 @@ namespace dcsg
             graphics.PreferredBackBufferHeight = 1080;
             graphics.SynchronizeWithVerticalRetrace = false;
             IsFixedTimeStep = false;
-            graphics.IsFullScreen = true;
+            //graphics.IsFullScreen = true;
             Content.RootDirectory = "Content";
         }
         protected override void Initialize()

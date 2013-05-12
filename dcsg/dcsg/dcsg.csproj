@@ -79,6 +79,7 @@
     <Compile Include="Engine\GameObject\Component\Component.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Engine\GameObject\Component\SoundEmitter.cs" />
     <Compile Include="Engine\GameObject\Component\SpriteRenderer.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -92,11 +93,13 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Engine\Initializer.cs" />
+    <Compile Include="Engine\Managers\Debug.cs" />
     <Compile Include="Engine\Managers\Enums.cs" />
     <Compile Include="Engine\Managers\Extensions.cs" />
     <Compile Include="Engine\Managers\Fonts.cs" />
     <Compile Include="Engine\Managers\Inputhandler.cs" />
     <Compile Include="Engine\Managers\Screens.cs" />
+    <Compile Include="Engine\Managers\Sounds.cs" />
     <Compile Include="Engine\Managers\SubClasses\AnimationFrame.cs" />
     <Compile Include="Engine\Managers\SubClasses\Sprite.cs" />
     <Compile Include="Engine\Managers\Textures.cs" />

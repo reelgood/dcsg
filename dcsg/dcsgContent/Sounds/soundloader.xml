@@ -1,0 +1,3 @@
+<sounds>
+	<soundeffect id="gen_click" path="Generic" filename="click" type="wav" />
+</sounds>

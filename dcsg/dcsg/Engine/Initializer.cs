@@ -16,6 +16,7 @@ namespace dcsg.Engine
         static Time _timeHandlerObject;
         static Inputhandler _ihObject;
         static Screen _firstScreen;
+        static Sounds _sounds;
         public static void Initialize()
         {
             if (_init) { return; }
@@ -25,6 +26,7 @@ namespace dcsg.Engine
             _ihObject = new Inputhandler();
             _textureHandlerObject = new Textures();
             _timeHandlerObject = new Time();
+            _sounds = new Sounds();
             Fonts.LoadFont("mainfont");
             Fonts.LoadFont("std");
             _firstScreen = new Game.Aleks.Mainmenu();
