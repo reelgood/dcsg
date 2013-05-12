@@ -19,7 +19,8 @@ namespace dcsg.Game.Aleks
         protected override void Update()
         {
             _secCount += Time.DeltaTime;
-            if (Inputhandler.MouseClick(1)) { Sounds.SimplePlay("gen_click"); }
+            if (Inputhandler.MouseClick(1)) { Sounds.SimplePlay("gen_click"); Debug.DebugLog("Mouse Clicked At: " + Inputhandler.Mousepoint.X.ToString() + "x " + Inputhandler.Mousepoint.Y.ToString() + "y", 14f); }
+            
             base.Update();
         }
         protected override void InternalDraw()

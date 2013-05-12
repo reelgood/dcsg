@@ -3,6 +3,8 @@ Content\Textures\pointer.xnb
 Content\test1.xnb
 Content\test2.xnb
 Content\Spritefonts\mainfont.xnb
+Content\Spritefonts\std_small.xnb
 Content\Spritefonts\mainfont.fnt
 Content\Spritefonts\std.fnt
+Content\Spritefonts\std_small.fnt
 Content\Sounds\soundloader.xml

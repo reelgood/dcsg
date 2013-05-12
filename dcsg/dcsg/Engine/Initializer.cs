@@ -17,11 +17,14 @@ namespace dcsg.Engine
         static Inputhandler _ihObject;
         static Screen _firstScreen;
         static Sounds _sounds;
+        static Debug _debugger;
         public static void Initialize()
         {
             if (_init) { return; }
             //***********************
             //Initialize Stuff here:
+            Fonts.LoadFont("std_small");
+            _debugger = new Debug();
 
             _ihObject = new Inputhandler();
             _textureHandlerObject = new Textures();
@@ -29,6 +32,7 @@ namespace dcsg.Engine
             _sounds = new Sounds();
             Fonts.LoadFont("mainfont");
             Fonts.LoadFont("std");
+
             _firstScreen = new Game.Aleks.Mainmenu();
 
             //Don't initialize stuff here:
