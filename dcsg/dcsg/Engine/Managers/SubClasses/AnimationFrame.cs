@@ -1,15 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 
 namespace dcsg.Engine
 {
 	public class AnimationFrame
 	{
-		int frameNumber;
-		Vector2 origin;
-		Rectangle sourceRect;
+		public Vector2 origin;
+		public Rectangle sourceRect;
+
+		public AnimationFrame(Vector2 Origin, Rectangle SourceRect)
+		{
+			this.origin = Origin;
+			this.sourceRect = SourceRect;
+		}
 	}
 }
