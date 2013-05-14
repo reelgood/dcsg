@@ -1,9 +1,11 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace dcsg.Engine
 {
+
 	public class Sprite
 	{
 		private bool _isAnimation;
@@ -53,7 +55,7 @@ namespace dcsg.Engine
 			this._sourceRect = SourceRect;
 			this._origin = Origin;
 			this._numFrames = NumFrames;
-			if (NumFrames < 1) throw new Exception("Need more then 1 frame in a animation");
+			if (NumFrames <= 1) throw new Exception("Need more then 1 frame in a animation");
 			this._animationSpeed = AnimationSpeed;
 
 			this._isAnimation = true;
@@ -74,7 +76,7 @@ namespace dcsg.Engine
 			this._animFrames = animationFrames;
 
 			this._numFrames = _animFrames.Length;
-			if (_numFrames < 1) throw new Exception("Need more then 1 frame in a animation");
+			if (_numFrames <= 1) throw new Exception("Need more then 1 frame in a animation");
 
 			this._isAnimation = true;
 			this._isUniform = false;
