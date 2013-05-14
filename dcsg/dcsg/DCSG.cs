@@ -17,7 +17,7 @@ using Microsoft.Xna.Framework.Media;
  *          * Replace Sounds with importer like textureloader (ole makes)
  *          * Make GUI buttons use a GUISkin class which has a default
  *          * Make multiple draw/update hooks for priority, or make some kind of prioritizing.
- * 
+ *          * Merge to new repo
  * 
  * 
  * 
